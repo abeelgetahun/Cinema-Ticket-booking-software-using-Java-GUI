@@ -64,7 +64,7 @@ public class MoviePage extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.BLACK);
 
-        movieContainer = new JPanel(new GridLayout(0, 3, 10, 10));
+        movieContainer = new JPanel(new GridLayout(0, 3, 10, 15));
         movieContainer.setBackground(Color.BLACK);
         movieContainer.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));  // Add 20px padding top and bottom
 
@@ -104,6 +104,11 @@ public class MoviePage extends JFrame {
                 try {
                     Image img = ImageIO.read(file);
                     String movieName = file.getName().replaceFirst("[.][^.]+ Birr", "");
+                    // Remove the file extension
+                int lastDotIndex = movieName.lastIndexOf('.');
+                if (lastDotIndex != -1) {
+                    movieName = movieName.substring(0, lastDotIndex);
+                }
                     double price = 100 + Math.random() * 10; // Random price between $10 and $20
                     MoviePanel moviePanel = new MoviePanel(img, movieName, price);
                     moviePanels.add(moviePanel);
@@ -125,7 +130,7 @@ public class MoviePage extends JFrame {
 
     private class MoviePanel extends JPanel {
         public MoviePanel(Image image, String name, double price) {
-            setLayout(new BorderLayout(0, 10));  // Add 10px vertical gap
+            setLayout(new BorderLayout(0, 5));  // Add 5px vertical gap
             setBackground(Color.BLACK);
 
             JLabel imageLabel = new JLabel(new ImageIcon(image.getScaledInstance(150, 225, Image.SCALE_SMOOTH)));
@@ -135,7 +140,7 @@ public class MoviePage extends JFrame {
             nameLabel.setForeground(Color.WHITE);
             nameLabel.setHorizontalAlignment(JLabel.CENTER);
 
-            JLabel priceLabel = new JLabel(String.format("%.2f", price));
+            JLabel priceLabel = new JLabel(String.format("%.2f Birr", price));
             priceLabel.setForeground(Color.WHITE);
             priceLabel.setHorizontalAlignment(JLabel.CENTER);
 
