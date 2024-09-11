@@ -6,8 +6,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class Loginpage extends JFrame {
+    private JTextField usernameOrEmailField;
+    private JPasswordField passwordField;
+    private JLabel errorLabel;
 
     public Loginpage() {
         setTitle("Cinema አምበሳ");
@@ -63,7 +69,6 @@ public class Loginpage extends JFrame {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            // Create path for rounded rectangle with straight right edge
             Path2D path = new Path2D.Float();
             path.moveTo(30, 0);
             path.lineTo(getWidth(), 0);
@@ -76,7 +81,6 @@ public class Loginpage extends JFrame {
 
             g2d.setClip(path);
 
-            // Draw background image
             if (backgroundImage != null) {
                 g2d.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
             }
@@ -93,36 +97,43 @@ public class Loginpage extends JFrame {
             gbc.insets = new Insets(7, 20, 7, 20);
             gbc.fill = GridBagConstraints.HORIZONTAL;
 
-            JLabel emailLabel = new JLabel("Email/User_name:");
+            JLabel usernameOrEmailLabel = new JLabel("Username/Email:");
             gbc.gridx = 0;
             gbc.gridy = 0;
-            add(emailLabel, gbc);
+            add(usernameOrEmailLabel, gbc);
 
-            JTextField emailField = new JTextField(20);
+            usernameOrEmailField = new JTextField(20);
             gbc.gridy = 1;
-            add(emailField, gbc);
+            add(usernameOrEmailField, gbc);
 
             JLabel passwordLabel = new JLabel("Password:");
             gbc.gridy = 2;
             add(passwordLabel, gbc);
 
-            JPasswordField passwordField = new JPasswordField(20);
+            passwordField = new JPasswordField(20);
             gbc.gridy = 3;
             add(passwordField, gbc);
+
+            errorLabel = new JLabel("");
+            errorLabel.setForeground(Color.RED);
+            gbc.gridy = 4;
+            add(errorLabel, gbc);
 
             JButton loginButton = new JButton("LOGIN");
             loginButton.setBackground(new Color(0, 120, 215));
             loginButton.setForeground(Color.WHITE);
             loginButton.setFocusPainted(false);
-            gbc.gridy = 4;
+            gbc.gridy = 5;
             gbc.insets = new Insets(10, 20, 10, 20);
             add(loginButton, gbc);
+
+            loginButton.addActionListener(e -> handleLogin());
 
             JButton forgotPasswordButton = new JButton("Forgot Password?");
             forgotPasswordButton.setBorderPainted(false);
             forgotPasswordButton.setContentAreaFilled(false);
             forgotPasswordButton.setForeground(Color.BLUE);
-            gbc.gridy = 5;
+            gbc.gridy = 6;
             gbc.insets = new Insets(10, 20, 10, 20);
             add(forgotPasswordButton, gbc);
 
@@ -130,7 +141,7 @@ public class Loginpage extends JFrame {
             noAccountButton.setBorderPainted(false);
             noAccountButton.setContentAreaFilled(false);
             noAccountButton.setForeground(Color.BLUE);
-            gbc.gridy = 6;
+            gbc.gridy = 7;
             add(noAccountButton, gbc);
 
             noAccountButton.addActionListener(e -> {
@@ -138,8 +149,6 @@ public class Loginpage extends JFrame {
                 createAccountForm.setVisible(true);
                 Loginpage.this.dispose();
             });
-
-            add(noAccountButton, gbc);
         }
 
         @Override
@@ -147,7 +156,6 @@ public class Loginpage extends JFrame {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            // Create path for rounded rectangle with straight left edge
             Path2D path = new Path2D.Float();
             path.moveTo(0, 0);
             path.lineTo(getWidth() - 30, 0);
@@ -159,9 +167,45 @@ public class Loginpage extends JFrame {
 
             g2d.setClip(path);
 
-            // Draw background
             g2d.setColor(getBackground());
             g2d.fillRect(0, 0, getWidth(), getHeight());
+        }
+    }
+
+    private void handleLogin() {
+        String usernameOrEmail = usernameOrEmailField.getText().trim();
+        String password = new String(passwordField.getPassword());
+
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("users.txt"));
+            boolean credentialsMatch = false;
+
+            for (String line : lines) {
+                String[] parts = line.split("\\s*,\\s*");
+                if (parts.length == 3) {
+                    String username = parts[0].trim();
+                    String email = parts[1].trim();
+                    String storedPassword = parts[2].trim();
+
+                    if ((usernameOrEmail.equals(username) || usernameOrEmail.equals(email)) && password.equals(storedPassword)) {
+                        credentialsMatch = true;
+                        break;
+                    }
+                }
+            }
+
+            if (credentialsMatch) {
+                errorLabel.setText("");
+                // Call Homepage class
+                Homepage homepage = new Homepage();
+                homepage.setVisible(true);
+                this.dispose();
+            } else {
+                errorLabel.setText("Match not Found!");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            errorLabel.setText("Error reading user data");
         }
     }
 
