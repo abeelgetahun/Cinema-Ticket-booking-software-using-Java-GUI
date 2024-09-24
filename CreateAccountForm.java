@@ -45,7 +45,7 @@ public class CreateAccountForm extends JFrame {
         gbc.insets = new Insets(5, 0, 5, 0);
 
         formPanel.add(new JLabel("Create An Account", JLabel.CENTER) {{
-            setFont(new Font("Brush Script MT", Font.BOLD, 30));
+            setFont(new Font("'Brush Script MT'", Font.BOLD, 30));
         }}, gbc);
 
         String[] labels = {"First Name", "Last Name", "User Name", "Password", "Email", "Phone Number"};
