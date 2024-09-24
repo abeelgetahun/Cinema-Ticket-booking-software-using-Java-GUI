@@ -33,15 +33,48 @@ public class Homepage extends JFrame {
         // Navigation buttons
         JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         navPanel.setOpaque(false);
-        String[] buttonLabels = {"Home", "Movie", "Teams", "About"};
-        for (String label : buttonLabels) {
-            navPanel.add(new JButton(label) {{
-                setContentAreaFilled(false);
-                setBorderPainted(false);
-                setFocusPainted(false);
-                setForeground(Color.BLACK);
-            }});
-        }
+         // initializing home button
+        
+         navPanel.add(new JButton("Home") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+            
+         }});
+         
+         // initializing movie button
+         
+         navPanel.add(new JButton("Movie") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+             addActionListener(e -> {
+                new MoviePage().setVisible(true);
+                Homepage.this.dispose();
+            });
+         }});
+ 
+         // initializing Team page
+
+         navPanel.add(new JButton("Teams") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+         }});
+ 
+         //initializing about page
+ 
+         navPanel.add(new JButton("About") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+         }});
+ 
+
         topPanel.add(navPanel, BorderLayout.EAST);
 
         mainPanel.add(topPanel, BorderLayout.NORTH);

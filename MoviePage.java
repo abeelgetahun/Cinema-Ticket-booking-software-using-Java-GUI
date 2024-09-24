@@ -43,20 +43,56 @@ public class MoviePage extends JFrame {
         }});
         headerPanel.add(logoPanel, BorderLayout.WEST);
 
-        JPanel menuPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        menuPanel.setOpaque(false);
-        String[] menuItems = {"Home", "Movie", "Teams", "About"};
-        for (String item : menuItems) {
-            JButton button = new JButton(item);
-            button.setFont(new Font("Arial", Font.BOLD, 14));
-            button.setOpaque(false);
-            button.setContentAreaFilled(false);
-            button.setBorderPainted(false);
-            button.setForeground(Color.BLACK);
-            menuPanel.add(button);
-        }
-        headerPanel.add(menuPanel, BorderLayout.EAST);
 
+        // Navigation buttons
+        JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        navPanel.setOpaque(false);
+         // initializing home button
+        
+         navPanel.add(new JButton("Home") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+             addActionListener(e -> {
+                new Homepage().setVisible(true);
+                MoviePage.this.dispose();
+            });
+            
+         }});
+         
+         // initializing movie button
+         
+         navPanel.add(new JButton("Movie") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+             
+         }});
+ 
+         // initializing Team page
+
+         navPanel.add(new JButton("Teams") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+         }});
+ 
+         //initializing about page
+ 
+         navPanel.add(new JButton("About") {{
+             setContentAreaFilled(false);
+             setBorderPainted(false);
+             setFocusPainted(false);
+             setForeground(Color.BLACK);
+         }});
+ 
+
+        headerPanel.add(navPanel, BorderLayout.EAST);
+
+        
         return headerPanel;
     }
 
