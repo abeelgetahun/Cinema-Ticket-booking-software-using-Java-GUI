@@ -76,6 +76,10 @@ public class Teams extends JFrame {
             setBorderPainted(false);
             setFocusPainted(false);
             setForeground(Color.BLACK);
+            addActionListener(e -> {
+                new About().setVisible(true);
+                Teams.this.dispose();
+            });
         }});
 
         topPanel.add(navPanel, BorderLayout.EAST);

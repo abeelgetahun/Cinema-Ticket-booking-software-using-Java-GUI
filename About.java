@@ -29,26 +29,64 @@ public class About extends JFrame {
         }});
         topPanel.add(logoPanel, BorderLayout.WEST);
 
-        // Navigation buttons
-        JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        navPanel.setOpaque(false);
-        
-        String[] navButtons = {"Home", "Movie", "Team", "About"};
-        for (String buttonText : navButtons) {
-            navPanel.add(new JButton(buttonText) {{
-                setContentAreaFilled(false);
-                setBorderPainted(false);
-                setFocusPainted(false);
-                setForeground(Color.BLACK);
-                addActionListener(e -> {
-                    if (!buttonText.equals("About")) {
-                        // Placeholder for navigation logic
-                        JOptionPane.showMessageDialog(About.this, "Navigating to " + buttonText);
-                        // About.this.dispose();
-                    }
-                });
-            }});
-        }
+      
+
+          // Navigation buttons
+          JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+          navPanel.setOpaque(false);
+           // initializing home button
+          
+           navPanel.add(new JButton("Home") {{
+               setContentAreaFilled(false);
+               setBorderPainted(false);
+               setFocusPainted(false);
+               setForeground(Color.BLACK);
+               addActionListener(e -> {
+                  new Homepage().setVisible(true);
+                  About.this.dispose();
+              });
+              
+           }});
+           
+           // initializing movie button
+           
+           navPanel.add(new JButton("Movie") {{
+               setContentAreaFilled(false);
+               setBorderPainted(false);
+               setFocusPainted(false);
+               setForeground(Color.BLACK);
+               addActionListener(e -> {
+                new MoviePage().setVisible(true);
+                About.this.dispose();
+            });
+               
+           }});
+   
+           // initializing Team page
+  
+           navPanel.add(new JButton("Teams") {{
+               setContentAreaFilled(false);
+               setBorderPainted(false);
+               setFocusPainted(false);
+               setForeground(Color.BLACK);
+               addActionListener(e -> {
+                  new Teams().setVisible(true);
+                  About.this.dispose();
+              });
+           }});
+   
+           //initializing about page
+   
+           navPanel.add(new JButton("About") {{
+               setContentAreaFilled(false);
+               setBorderPainted(false);
+               setFocusPainted(false);
+               setForeground(Color.BLACK);
+             
+           }});
+   
+  
+          topPanel.add(navPanel, BorderLayout.EAST);
 
         topPanel.add(navPanel, BorderLayout.EAST);
         mainPanel.add(topPanel, BorderLayout.NORTH);
@@ -56,7 +94,7 @@ public class About extends JFrame {
         // Center panel with black box
         JPanel centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBackground(Color.BLACK);
-        centerPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 20, 60));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(50, 60, 150, 60));
 
         // Title "About Our Cinema App"
         JLabel titleLabel = new JLabel("About Our Cinema App");
@@ -69,8 +107,8 @@ public class About extends JFrame {
         // About content
         JTextPane aboutContent = new JTextPane();
         aboutContent.setContentType("text/html");
-        String htmlContent = "<html><body style='width: 380px; text-align: center; font-family: Comic Sans MS; font-size: 16px; color: white;'>" +
-            "<p>Welcome to our Cinema App! This project showcases our dedication to creating " +
+        String htmlContent = "<html><body style='width: 380px; text-align: center; font-family: Comic Sans MS; font-size: 13px; color: white;'>" +
+            "<p>Welcome to our Cinema App! This project showcases <br> our dedication to creating " +
             "a user-friendly platform for movie enthusiasts.</p>" +
             "<p>For more insights into our code and future updates, feel free to follow my " +
             "GitHub account: <a href='https://github.com/abeelgetahun' style='color: #4CAF50;'>abeelgetahun</a>. Your support " +
