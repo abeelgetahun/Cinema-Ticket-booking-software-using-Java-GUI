@@ -6,6 +6,8 @@
 
 Ambessa Cinema Management System is a comprehensive Java-based desktop application designed to revolutionize cinema operations. With an elegant interface and robust functionality, this software ensures seamless management of movie screenings, ticket bookings, and customer interactions, tailored for modern cinemas.
 
+> **Note:** This project is a fully functional application designed as an exploration of Java GUI technology. It serves as a practical demonstration of how Java's Swing toolkit can be used to create dynamic and user-friendly desktop applications.
+
 ---
 
 ## Features
@@ -55,6 +57,21 @@ Ambessa Cinema Management System is a comprehensive Java-based desktop applicati
 
 ---
 
+## Demo
+
+### Welcome Screen
+![Welcome Screen](https://github.com/abeelgetahun/Cinema-Ticket-booking-software-using-Java-GUI/blob/main/readme/Screenshot%202025-01-21%20095643.png)
+
+### Create Account Screen
+![Create Account Screen](https://github.com/abeelgetahun/Cinema-Ticket-booking-software-using-Java-GUI/blob/main/readme/Screenshot%202025-01-21%20095420.png)
+
+### Home Screen
+![Home Screen](https://github.com/abeelgetahun/Cinema-Ticket-booking-software-using-Java-GUI/blob/main/readme/Screenshot%202025-01-21%20095709.png)
+
+### Booking Interface
+![Booking Interface](https://github.com/abeelgetahun/Cinema-Ticket-booking-software-using-Java-GUI/blob/main/readme/Screenshot%202025-01-21%20095744.png)
+
+
 ## Configuration
 
 1. Ensure the custom logo file is placed in the correct directory.
@@ -79,18 +96,15 @@ We welcome contributors to make this project even better. Submit issues, fork th
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for more details.
-
----
 
 ## Contact
 
 For queries, feedback, or suggestions, feel free to reach out:
 
-**Abel Getahun**  
-✉️ abelgetahun66@gmail.com
 
-Thank you for your interest in the Ambessa Cinema Management System! Let's redefine the cinema experience.
+
+
+
+
+
 
