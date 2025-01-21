@@ -6,7 +6,7 @@
 
 Ambessa Cinema Management System is a comprehensive Java-based desktop application designed to revolutionize cinema operations. With an elegant interface and robust functionality, this software ensures seamless management of movie screenings, ticket bookings, and customer interactions, tailored for modern cinemas.
 
-> **Note:** This project is a ** NOT ** fully functional application designed as an exploration of Java GUI technology. It serves as a practical demonstration of how Java's Swing toolkit can be used to create dynamic and user-friendly desktop applications.
+> **Note:** This project is a **NOT** fully functional application designed as an exploration of Java GUI technology. It serves as a practical demonstration of how Java's Swing toolkit can be used to create dynamic and user-friendly desktop applications.
 
 ---
 
